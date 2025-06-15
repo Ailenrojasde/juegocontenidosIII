@@ -1,0 +1,670 @@
+:root {
+    --color-primary: #0066cc;
+    --color-secondary: #f5f5f5;
+    --color-text: #333333;
+    --color-white: #ffffff;
+    --color-gold: #d4af37;
+    --color-dove-blue: #0066cc;
+    --color-light-blue: #B5D8EB;
+    --color-background: #F5F5F5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* Estilos generales de las pantallas */
+.screen {
+    display: none;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Estilos de botones */
+.btn-primary {
+    background-color: var(--color-dove-blue);
+    color: var(--color-white);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 2rem;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de la pantalla de bienvenida */
+#welcome-screen {
+    background-color: var(--color-white);
+}
+
+#welcome-screen h1 {
+    color: var(--color-dove-blue);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    max-width: 200px;
+    margin: 2rem 0;
+}
+
+/* Estilos de la pantalla de instrucciones */
+#instructions-screen {
+    background-color: var(--color-white);
+}
+
+#instructions-screen h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--color-gold);
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.instructions-content {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.instructions-text {
+    font-size: 1.3rem;
+    color: #222;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.btn-play {
+    background-color: var(--color-gold);
+}
+
+/* Estilos de la pantalla de juego */
+#game-screen {
+    background-color: var(--color-white);
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    padding: 1rem;
+    background-color: var(--color-light-blue);
+    border-radius: 10px;
+}
+
+.game-logo {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header-logo {
+    width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto 1rem auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 0.8rem;
+}
+
+.game-info {
+    background: linear-gradient(135deg, #d4af37 0%, #f9e076 100%);
+    color: #fff;
+    padding: 1.2rem 2.5rem;
+    border-radius: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    border: 2px solid #c19b2e;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 0.5rem 1.2rem;
+    background: rgba(255,255,255,0.10);
+    border-radius: 1rem;
+    min-width: 110px;
+    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.08);
+}
+
+.stat-label {
+    display: block;
+    color: #fffbea;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+    text-shadow: 1px 1px 2px #bfa43a;
+    text-align: center;
+}
+
+.stat-value {
+    display: block;
+    color: #fff;
+    font-size: 1.7rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 2px #bfa43a;
+}
+
+.btn-reset {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-dove-blue);
+    transition: transform 0.3s;
+}
+
+.btn-reset:hover {
+    transform: rotate(180deg);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    perspective: 1000px;
+}
+
+.card {
+    aspect-ratio: 1;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0.5rem;
+}
+
+.card-front {
+    background-color: var(--color-white);
+    transform: rotateY(180deg);
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.card-front:hover img {
+    transform: scale(1.05);
+}
+
+.card-back {
+    background-color: var(--color-light-blue);
+    background: linear-gradient(135deg, var(--color-light-blue) 0%, var(--color-dove-blue) 100%);
+}
+
+.card-logo {
+    width: 60%;
+    height: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .card-logo {
+    opacity: 1;
+}
+
+.card.matched .card-front {
+    border: 3px solid var(--color-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.card.matched .card-front img {
+    filter: brightness(1.1);
+}
+
+.game-message {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: var(--color-dove-blue);
+    min-height: 2rem;
+}
+
+/* Estilos de la pantalla de resultados */
+#results-screen {
+    background-color: var(--color-white);
+}
+
+.results-card {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 3px solid var(--color-gold);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease-in;
+}
+
+.results-message {
+    color: var(--color-dove-blue);
+    font-size: 1.3rem;
+    margin: 1rem 0;
+}
+
+.results-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-share {
+    background-color: var(--color-light-blue);
+    color: var(--color-dove-blue);
+    border: 2px solid var(--color-dove-blue);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-share:hover {
+    background-color: var(--color-dove-blue);
+    color: var(--color-white);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes matchGlow {
+    0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    50% { box-shadow: 0 0 20px 5px rgba(212, 175, 55, 0.5); }
+    100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-8px); }
+  80% { transform: translateX(8px); }
+  100% { transform: translateX(0); }
+}
+
+.game-board.shake {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .game-board {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+    }
+
+    .results-buttons {
+        flex-direction: column;
+    }
+
+    .btn-share,
+    .btn-primary {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-board {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .instructions-text {
+        font-size: 1rem;
+    }
+}
+
+/* Estilos para el mensaje emergente */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h3 {
+    color: #d4af37 !important;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.modal-content p {
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.prize-image {
+    margin: 1.5rem 0;
+}
+
+.prize-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.btn-gold {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.btn-gold:hover {
+    background-color: #d4af37;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-gold:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la pantalla de bienvenida */
+.welcome-content {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+    animation: fadeInDown 1s ease-out;
+}
+
+.welcome-logo {
+    width: 200px;
+    height: auto;
+    max-width: 100%;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
+}
+
+.welcome-logo:hover {
+    transform: scale(1.05);
+}
+
+.welcome-content h1 {
+    color: var(--color-primary);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.welcome-content p {
+    color: var(--color-text);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-out 0.6s both;
+}
+
+.welcome-content .btn-gold {
+    animation: fadeIn 1s ease-out 0.9s both;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .welcome-logo {
+        width: 150px;
+    }
+
+    .welcome-content h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-content p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-logo {
+        width: 120px;
+    }
+
+    .welcome-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .welcome-content p {
+        font-size: 1rem;
+    }
+}
+
+/* Estilos para el contador de intentos y pares */
+.game-info span {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    min-width: 60px;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Media queries para responsividad */
+@media (max-width: 600px) {
+    .game-info {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        font-size: 1rem;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .header-logo {
+        width: 90px;
+    }
+}
+
+/* Estilos para el modal de victoria */
+.modal-content h3.victory-title {
+    color: #d4af37 !important; /* Color dorado */
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.prize-image {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: var(--color-white);
+    border-radius: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prize-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal-content {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content p {
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.stars-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.2rem 0 0.5rem 0;
+}
+.star {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    background: url('assets/star-gold.svg') no-repeat center center/contain;
+    opacity: 0.85;
+    transition: transform 0.2s;
+}
+.star.inactive {
+    filter: grayscale(1) brightness(1.5);
+    opacity: 0.4;
+}
+.dove-level {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #d4af37;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px #bfa43a;
+} 
